@@ -1,0 +1,5 @@
+.error_msg {
+      color: red !important;
+      list-style: none;
+      margin-right: 10px;
+}

@@ -1,0 +1,17 @@
+<div *ngIf="recommendedCuisine">
+  <h3 class="h3 mt-3 text-dark">Recommended Restaurant</h3>
+  <hr class="mb-2" />
+  <div class="item_outter">
+    <div *ngFor="let item of recommendedCuisine" class="item_container">
+      <div class="item_img">
+        <img src="../../../../../assets/noavailable.png" alt="" />
+      </div>
+      <div class="item_content">
+        <h3>{{ item["name"] }}</h3>
+        <p>Rs. {{ item["cost"] }}</p>
+        <h2 class="text-dark">{{ item["cuisines"] }}</h2>
+        <span>{{ item["location"] }}</span>
+      </div>
+    </div>
+  </div>
+</div>

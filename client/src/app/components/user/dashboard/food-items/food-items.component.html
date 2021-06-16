@@ -1,0 +1,15 @@
+<h3 class="h3 mt-3 text-dark">Featured Cuisines</h3>
+<hr class="mb-2" />
+<div class="item_outter">
+  <div *ngFor="let item of foodItems" class="item_container">
+    <div class="item_img">
+      <img src="{{ imageUrl }}/{{ item['image'] }}" alt="" />
+    </div>
+    <div class="item_content">
+      <h3 (click)="onDetail(item['restaurant']._id)">{{ item["foodName"] }}</h3>
+      <p>Rs. {{ item["unitPrice"] }}</p>
+      <h2 class="text-dark">{{ item["restaurant"].restaurantName }}</h2>
+      <span>{{ item["restaurant"].location }}</span>
+    </div>
+  </div>
+</div>

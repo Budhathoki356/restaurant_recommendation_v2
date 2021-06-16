@@ -1,0 +1,24 @@
+<div class="container" style="margin-top: 5rem">
+  <div class="restro_detail--img">
+    <img src="{{ imgUrl }}/{{ restaurantDetails.image }}" alt="" />
+  </div>
+  <div class="restro_detail">
+    <h1>{{ restaurantDetails.restaurantName }}</h1>
+    <h3>Details:</h3>
+    <div class="restro_detail--inner">
+      <p>
+        <i class="fas fa-map-marked-alt"></i>{{ restaurantDetails.location }}
+      </p>
+      <p>
+        <i class="fas fa-phone-square-alt"></i>{{ restaurantDetails.phoneNo }}
+      </p>
+    </div>
+    <h3>Description:</h3>
+    <p>{{ restaurantDetails.description }}</p>
+    <div class="reviews">
+      <h4>Reviews:</h4>
+      <textarea name="review" id="review" cols="30" rows="10"></textarea>
+      <button class="submit_review" type="submit">Submit</button>
+    </div>
+  </div>
+</div>
