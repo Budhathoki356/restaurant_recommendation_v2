@@ -6,18 +6,18 @@ var ReviewSchema = new Schema({
             type: String,
             require: true
       },
-      restro_id: {
+      restroId: {
             type: Schema.Types.ObjectId,
             ref: 'restaurant',
             required: true
       },
-      user_id: {
+      userId: {
             type: Schema.Types.ObjectId,
             ref: 'user',
             require: true
       }
 });
 
-var ReviewSchema = mongoose.model('reviews', ReviewSchema);
+var ReviewModel = mongoose.model('reviews', ReviewSchema);
 
-module.exports = ReviewSchema;
+module.exports = ReviewModel;

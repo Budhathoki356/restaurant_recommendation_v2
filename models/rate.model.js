@@ -1,23 +1,22 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var ReviewSchema = new Schema({
-      review: {
-            type: String,
-            require: true
+var RateSchema = new Schema({
+      rate: {
+            type: Number,
       },
-      restro_id: {
+      restroId: {
             type: Schema.Types.ObjectId,
             ref: 'restaurant',
             required: true
       },
-      user_id: {
+      userId: {
             type: Schema.Types.ObjectId,
             ref: 'user',
             require: true
       }
 });
 
-var ReviewSchema = mongoose.model('reviews', ReviewSchema);
+var RateModel = mongoose.model('rate', RateSchema);
 
-module.exports = ReviewSchema;
+module.exports = RateModel;

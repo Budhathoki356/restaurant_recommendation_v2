@@ -142,8 +142,8 @@ const deleteRestaurant = (req, res, next) => {
 const checkUser = (req, res, next) => {
     const user_id = req.params.id
     RestaurantModel.find({ user: user_id })
-        .then(result => { 
-            if(!result) {
+        .then(result => {
+            if (!result) {
                 res.status(200).json({
                     message: 'No restaurant',
                 })

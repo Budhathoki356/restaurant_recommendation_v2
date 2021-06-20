@@ -97,4 +97,31 @@ export class RestaurantService {
     })
   }
 
+  addReview(id: string, review: string) {
+    return this.http.post(this.domain + '/review', { restroId: id, review: review }, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    })
+  }
+
+  getReviews(id: string) {
+    return this.http.get(this.domain + '/review/' + id, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    })
+  }
+
+  addRate(rate: any, id: string) {
+    return this.http.post(this.domain + '/rate', { rate: JSON.stringify(rate), restroId: id }, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    })
+  }
+
 }
