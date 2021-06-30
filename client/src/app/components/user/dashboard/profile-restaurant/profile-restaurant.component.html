@@ -48,7 +48,7 @@
         ></textarea>
         <input class="submit_review" type="submit" value="Submit" />
       </form>
-      <h3 class="mt-3 mb-3 cmt-title">Comments</h3>
+      <h3 *ngIf="reviews" class="mt-3 mb-3 cmt-title">Comments</h3>
       <div *ngIf="reviews">
         <div *ngFor="let review of reviews" class="review_inner">
           <h3><i class="far fa-user"></i> {{ review["userId"].username }}</h3>

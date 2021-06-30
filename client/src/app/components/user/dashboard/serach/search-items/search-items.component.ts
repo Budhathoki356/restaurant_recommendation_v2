@@ -1,31 +1,25 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router';
+import { Component, OnInit, Input } from "@angular/core";
+import { environment } from "src/environments/environment";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-search-items',
-  templateUrl: './search-items.component.html',
-  styleUrls: ['./search-items.component.css']
+  selector: "app-search-items",
+  templateUrl: "./search-items.component.html",
+  styleUrls: ["./search-items.component.css"],
 })
 export class SearchItemsComponent implements OnInit {
-
-  imageUrl = environment.imgUrl
-  @Input() searchItems: any
-
-  constructor(
-    private router: Router,
-  ) { }
+  imageUrl = environment.imgUrl;
+  @Input() searchItems: any;
+  @Input() len: any;
+  constructor(private router: Router) {}
 
   onProfile(id: any) {
-    console.log(id)
-    this.router.navigate(['restaurant-profile/', id])
+    this.router.navigate(["restaurant-profile/", id]);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onDetail(id: any) {
-    this.router.navigate([`/user/detail/${id}`])
+    this.router.navigate([`/user/detail/${id}`]);
   }
-
 }
