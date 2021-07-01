@@ -12,25 +12,34 @@ export class SerachComponent implements OnInit {
   searchItems: any;
   recommendedRestaurants: any;
   searchForm = new FormGroup({
-    // location: new FormControl(''),
+    location: new FormControl(""),
     foodName: new FormControl(""),
+    gtePrice: new FormControl(""),
   });
   len = false;
 
   constructor(private cuisineService: CuisineService) {}
 
   onSearchSubmit() {
+    this.len = false;
+    this.searchItems = [];
+    this.cuisineService.search(this.searchForm.value).subscribe((result) => {
+      if (result) {
+        if (!result[0]?.restaurant) {
+          this.len = true;
+        } else {
+          this.searchItems = result;
+        }
+      } else {
+        this.len = true;
+      }
+    });
+    console.log(this.searchForm.value);
     this.cuisineService
-      .search(this.searchForm.value.foodName)
-      .subscribe((result) => {
-        this.searchItems = result;
-        if (this.searchItems.success == false) this.len = true;
-      });
-
-    this.cuisineService
-      .getRecommendation(this.searchForm.value.foodName)
+      .getRecommendation(this.searchForm.value)
       .subscribe((result) => {
         this.recommendedRestaurants = result;
+        console.log(this.recommendedRestaurants);
         this.messageEvent.emit(this.recommendedRestaurants);
       });
   }

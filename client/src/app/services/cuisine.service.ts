@@ -1,75 +1,72 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { environment } from "src/environments/environment";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class CuisineService {
-
   domain: string;
   recommendationApi: string;
 
-  constructor(
-    private http: HttpClient,
-  ) {
+  constructor(private http: HttpClient) {
     this.domain = environment.apiUrl;
     this.recommendationApi = environment.recommendationEngineApi;
   }
 
   search(condition: any) {
-    return this.http.get(`${this.domain}/search?cuisine=${condition}`, {
+    return this.http.post(`${this.domain}/search`, condition, {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      })
-    })
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }),
+    });
   }
 
-  getRecommendation(cuisine: any) {
-    return this.http.get(`${this.recommendationApi}/recommendation/${cuisine}`, {
+  getRecommendation(data: any) {
+    return this.http.post(`${this.recommendationApi}/recommendation`, data, {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      })
-    })
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }),
+    });
   }
 
   getAllCuisine() {
-    return this.http.get(this.domain + '/cuisine', {
+    return this.http.get(this.domain + "/cuisine", {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      })
-    })
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }),
+    });
   }
 
   getAll() {
-    return this.http.get(this.domain + '/food-item', {
+    return this.http.get(this.domain + "/food-item", {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      })
-    })
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }),
+    });
   }
 
   getById(id: string) {
-    return this.http.get(this.domain + '/food-item/' + id, {
+    return this.http.get(this.domain + "/food-item/" + id, {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      })
-    })
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }),
+    });
   }
 
   remove(id: string) {
-    return this.http.delete(this.domain + '/food-item/' + id, {
+    return this.http.delete(this.domain + "/food-item/" + id, {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      })
-    })
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }),
+    });
   }
 
   upload(data: any, files) {
@@ -77,7 +74,7 @@ export class CuisineService {
     const xhr = new XMLHttpRequest();
     // append image only if we have files
     if (files && files[0]) {
-      formData.append('img', files[0], files[0].name);
+      formData.append("img", files[0], files[0].name);
     }
     // data ready for BE
     for (let key in data) {
@@ -92,17 +89,21 @@ export class CuisineService {
             observer.error(xhr.response);
           }
         }
-      }
-    })
+      };
+    });
 
     let URL;
     let method;
 
     if (data._id) {
-      URL = `${this.domain}/food-item/${data._id}?token=Bearer ${localStorage.getItem('token')}`
+      URL = `${this.domain}/food-item/${
+        data._id
+      }?token=Bearer ${localStorage.getItem("token")}`;
       method = "PUT";
     } else {
-      URL = `${this.domain}/food-item?token=Bearer ${localStorage.getItem('token')}`
+      URL = `${this.domain}/food-item?token=Bearer ${localStorage.getItem(
+        "token"
+      )}`;
       method = "POST";
     }
     xhr.open(method, URL, true);
@@ -110,5 +111,4 @@ export class CuisineService {
 
     return upload;
   }
-
 }
