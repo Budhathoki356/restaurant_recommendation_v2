@@ -1,7 +1,12 @@
-<div *ngIf="searchItems">
+<div *ngIf="searchItems || len">
   <h3 class="h3 mt-3 text-dark">Search Results</h3>
   <hr class="mb-2" />
-  <div class="item_outter">
+  <div *ngIf="len" class="row">
+    <div class="col-5">
+      <p class="text-muted">Restaurant Not Found.</p>
+    </div>
+  </div>
+  <div *ngIf="searchItems" class="item_outter">
     <div *ngFor="let item of searchItems" class="item_container">
       <div class="item_img">
         <img src="{{ imageUrl }}/{{ item['image'] }}" alt="" />

@@ -11,6 +11,8 @@ var restaurantRoute = require('./routes/restaurant')
 var foodItemRoute = require('./routes/footitem')
 var searchRoute = require('./routes/search')
 var cuisineRoute = require('./routes/cuisine')
+var rateRoute = require('./routes/rate')
+var reviewRoute = require('./routes/review')
 
 var authenticate = require('./middlewares/authenticate');
 var authorize = require('./middlewares/authorize');
@@ -41,6 +43,8 @@ app.use('/restaurant', authenticate, restaurantRoute);
 app.use('/food-item', authenticate, foodItemRoute)
 app.use('/search', authenticate, searchRoute)
 app.use('/cuisine', cuisineRoute)
+app.use('/rate', authenticate, rateRoute)
+app.use('/review', authenticate, reviewRoute)
 
 // establish connections
 app.listen(app.get('port'), function (err, data) {

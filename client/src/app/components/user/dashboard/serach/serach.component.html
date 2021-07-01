@@ -1,12 +1,19 @@
 <form class="pt-4" [formGroup]="searchForm" (submit)="onSearchSubmit()">
   <div class="input-group mb-3">
-    <!-- <input
+    <input
       type="text"
       class="form-control col-sm-3"
       placeholder="Location"
       name="location"
       formControlName="location"
-    /> -->
+    />
+    <input
+      type="text"
+      class="form-control col-sm-3"
+      placeholder="Price"
+      name="gtePrice"
+      formControlName="gtePrice"
+    />
     <input
       type="text"
       class="form-control"
@@ -25,4 +32,4 @@
   </div>
 </form>
 
-<app-search-items [searchItems]="searchItems"></app-search-items>
+<app-search-items [searchItems]="searchItems" [len]="len"></app-search-items>

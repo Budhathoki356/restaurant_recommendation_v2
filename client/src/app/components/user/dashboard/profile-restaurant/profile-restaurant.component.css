@@ -61,3 +61,42 @@ p {
 .submit_review:hover {
       background: rgb(9, 161, 9);
 }
+
+.review_inner {
+      border: 2px solid gray;
+      border-radius: 10px;
+      margin-bottom: 20px;
+}
+
+.review_inner h3, .review_inner p {
+      padding: 5px 10px;
+}
+
+.review_inner>h3 {
+      text-transform: capitalize;
+      color: black !important;
+}
+
+.review_inner p {
+      color: rgb(99, 99, 99) !important;
+}
+
+.cmt-title {
+      border-bottom: 2px solid gray;
+      padding-bottom: 15px;
+}
+
+.rating-list li {
+      float: right;
+      color: #ddd;
+      padding: 10px 5px;
+}
+
+.rating-list li:hover, .rating-list li:hover~li, .rating-list li.selected {
+      color: #ffd700;
+}
+
+.rating-list {
+      display: inline-block;
+      list-style: none;
+}
